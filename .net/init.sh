@@ -15,13 +15,8 @@ uninet(){
   cd -
 }
 
-this(){
-  cd ..
-  [[ -d this/this ]] || cp -r this/.this this/this
-}
 
 main(){
   uninet
-  this
 }
 main
