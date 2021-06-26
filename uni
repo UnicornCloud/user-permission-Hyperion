@@ -1,7 +1,5 @@
 ---
 
-- hosts: node
+- hosts: net
   roles:
-    - template/example
-    - this
-    - myrole
+    - ubuntu

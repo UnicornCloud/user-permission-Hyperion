@@ -2,9 +2,10 @@
 
 - name: Add user to group 'libvirt'
   ansible.builtin.user:
-    name: '{{user}}'
+    name: '{{ansible_user}}'
     groups: libvirt,libvirt-qemu
     append: yes
+  become: true
 
 
 - name:
@@ -13,6 +14,7 @@
     regexp: '#unix_sock_group = "libvirt"'
     replace: 'unix_sock_group = "libvirt"'
   notify: restart libvirtd
+  become: true
 
 - name:
   ansible.builtin.replace:
@@ -20,6 +22,6 @@
     regexp: '#unix_sock_rw_perms = "0770"'
     replace: 'unix_sock_rw_perms = "0770"'
   notify: restart libvirtd
-
+  become: true
 
 # https://computingforgeeks.com/use-virt-manager-as-non-root-user/
